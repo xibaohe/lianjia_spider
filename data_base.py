@@ -34,6 +34,26 @@ def read_xiaoqu_name_by_bianhao(conn,bianhao):
         return None
 
 
+def get_all_chengjiao_orderby_time(conn):
+    cursor = conn.cursor()
+    cursor.execute(" select * from chengjiao order by sign_time ")
+    all_list = cursor.fetchall()
+    return all_list
+
+
+def run_commad(conn,commad):
+    cursor = conn.cursor()
+    cursor.execute(commad)
+    return cursor.fetchall()
+
+
+def get_chengjiao_xiaoqubianhao_is_null(conn):
+    cursor = conn.cursor()
+    cursor.execute(" select * from chengjiao where xiaoqubianhao = '' ")
+    cj_list = cursor.fetchall()
+    return cj_list
+
+
 def update_chengjiao(db_cj,xiaoqubianhao,house_bianhao):
     cursor = db_cj.cursor()
     cursor.execute("update chengjiao set xiaoqubianhao = (%s) where house_bianhao = (%s)", (xiaoqubianhao, house_bianhao))

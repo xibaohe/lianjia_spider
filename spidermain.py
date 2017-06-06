@@ -88,12 +88,22 @@ def spider_chengjiao_pages(conn):
             break
 
 
+def handle_xiaoqubianhao_is_null(conn):
+    #处理成交记录中小区编号为0的情况
+    cj_list = db.get_chengjiao_xiaoqubianhao_is_null(conn)
+    for u in cj_list:
+        print u[1]
+        scj.chengjiao_detail_page(conn, u[1])
+
+
+
 if __name__ == "__main__":
     reload(sys)
     sys.setdefaultencoding("utf-8")
     conn = db.database_init()
     #read_log(conn)
     #spider_chengjiao_pages(conn)
-    read_xiaoqu_error(conn)
+    #read_xiaoqu_error(conn)
+    handle_xiaoqubianhao_is_null(conn)
 
 

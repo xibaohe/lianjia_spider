@@ -21,8 +21,8 @@ def read_cookies():
 
 class myUrllib(object):
     cookies_last_update_time = datetime.datetime.now()
-    #cookies_list = Get_Cookies.get_cookie_pool()
-    cookies_list = read_cookies()
+    cookies_list = Get_Cookies.get_cookie_pool()
+    #cookies_list = read_cookies()
     interval_time = 7200
     SOCKS5_HOST = "127.0.0.1"
     SOCKS5_PORT = 1080

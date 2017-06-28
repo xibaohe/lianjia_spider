@@ -102,8 +102,8 @@ if __name__ == "__main__":
     sys.setdefaultencoding("utf-8")
     conn = db.database_init()
     #read_log(conn)
-    #spider_chengjiao_pages(conn)
-    read_xiaoqu_error(conn)
+    spider_chengjiao_pages(conn)
+    #read_xiaoqu_error(conn)
     #handle_xiaoqubianhao_is_null(conn)
 
 

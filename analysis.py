@@ -32,9 +32,9 @@ def each_month_num(conn,year,region='all'):
             command[str(month)] = " select count(1),round(avg(unit_price),2) from chengjiao where sign_time >= '"\
                                   +year+"."+m+".01' and sign_time <= '"+year+"."+m+".31' "
         else:
-            command[str(month)] = u" select count(1),round(avg(unit_price),2) from chengjiao,xiaoqu " \
-                                  u" where chengjiao.xiaoqubianhao = xiaoqu.bianhao and xiaoqu.regionb='" + region + \
-                                  u"' and sign_time >= '"+year+"."+m+".01' and sign_time <= '"+year+"."+m+".31' "
+            command[str(month)] = " select count(1),round(avg(unit_price),2) from chengjiao,xiaoqu " \
+                                  " where chengjiao.xiaoqubianhao = xiaoqu.bianhao and xiaoqu.regionb='" + region + \
+                                  "' and sign_time >= '"+year+"."+m+".01' and sign_time <= '"+year+"."+m+".31' "
 
 
         num_list.append(db.run_commad(conn,command[str(month)])[0][0])

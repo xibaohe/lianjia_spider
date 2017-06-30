@@ -21,8 +21,8 @@ def read_cookies():
 
 class myUrllib(object):
     cookies_last_update_time = datetime.datetime.now()
-    cookies_list = Get_Cookies.get_cookie_pool()
-    #cookies_list = read_cookies()
+    #cookies_list = Get_Cookies.get_cookie_pool()
+    cookies_list = read_cookies()
     interval_time = 7200
     SOCKS5_HOST = "127.0.0.1"
     SOCKS5_PORT = 1080
@@ -62,6 +62,7 @@ class myUrllib(object):
         try:
             socket.socket = cls.default_socket  # 浏览器不使用代理
             sleep_time = cls.interval[random.randint(0, len(cls.interval) - 1)]
+            sleep_time = 0
             print u"sleep time : %d" % sleep_time
             time.sleep(sleep_time*2)
             driver = selenium.webdriver.Firefox()

@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 import data_base as db
 import matplotlib.pyplot as plt
 import os
 import constant as ct
+plt.rcParams['font.sans-serif'] = ['SimHei']  #用来正常显示中文标签
+plt.rcParams['axes.unicode_minus'] = False  #用来正常显示负号
 
 
 def each_year_num(conn):
@@ -95,8 +98,9 @@ def statistic(conn,region):
 if __name__ == "__main__":
     conn = db.database_init()
     regions = []
-    #statistic(conn, 'all')
+    statistic(conn, 'all')
     for u in ct.regions_cd:
+        print u
         statistic(conn, u)
     #each_year_num(conn)
 

@@ -96,14 +96,21 @@ def handle_xiaoqubianhao_is_null(conn):
         scj.chengjiao_detail_page(conn, u[1])
 
 
+def handle_wenjiang_error(conn):
+    cj_list = db.get_chengjiao_wenjiang_xiaoqu_error_(conn)
+    for u in cj_list:
+        print u[1]
+        scj.chengjiao_detail_page(conn, u[1])
+
 
 if __name__ == "__main__":
     reload(sys)
     sys.setdefaultencoding("utf-8")
     conn = db.database_init()
     #read_log(conn)
-    spider_chengjiao_pages(conn)
+    #spider_chengjiao_pages(conn)
     #read_xiaoqu_error(conn)
     #handle_xiaoqubianhao_is_null(conn)
+    handle_wenjiang_error(conn)
 
 

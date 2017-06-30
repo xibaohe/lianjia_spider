@@ -16,7 +16,17 @@ def chengjiao_detail_page(db_cj, url_page):
         print "error: %s" % url_page
         return False
     div = soup.find('div', {'id': 'resblockCardContainer'})
-    href = div.find('a', {'class': 'fr LOGCLICK'}).get('href')
+    if div is None:
+        print u"交易记录不存在: %s" % url_page
+        return False
+    href = div.find('a', {'class': 'fr LOGCLICK'})
+    if href is None:
+        print u"找不到小区链接: %s" % url_page
+        return False
+    href = href.get('href')
+    if href is None:
+        print u"没有小区链接: %s" % url_page
+        return False
     house_bianhao = re.findall(r'[0-9]+', url_page)[0]
     xiaoqubianhao = re.findall(r'[0-9]+', href)[0]
     xiaoquname = db.read_xiaoqu_name_by_bianhao(db_cj, xiaoqubianhao)

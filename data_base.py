@@ -53,6 +53,14 @@ def get_chengjiao_xiaoqubianhao_is_null(conn):
     cj_list = cursor.fetchall()
     return cj_list
 
+def get_chengjiao_wenjiang_xiaoqu_error_(conn):
+    cursor = conn.cursor()
+    cursor.execute(" select * from chengjiao where xiaoqubianhao = 1620020495512202 order by sign_time")
+    cj_list = cursor.fetchall()
+    return cj_list
+
+
+
 
 def update_chengjiao(db_cj,xiaoqubianhao,house_bianhao):
     cursor = db_cj.cursor()

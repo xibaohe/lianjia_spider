@@ -98,10 +98,10 @@ def statistic(conn,region):
 if __name__ == "__main__":
     conn = db.database_init()
     regions = []
-    statistic(conn, 'all')
-    for u in ct.regions_cd:
-        print u
-        statistic(conn, u)
-    #each_year_num(conn)
+    # statistic(conn, 'all')
+    # for u in ct.regions_cd:
+    #     print u
+    #     statistic(conn, u)
+    each_year_num(conn)
 
 

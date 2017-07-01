@@ -53,12 +53,21 @@ def get_chengjiao_xiaoqubianhao_is_null(conn):
     cj_list = cursor.fetchall()
     return cj_list
 
+
 def get_chengjiao_wenjiang_xiaoqu_error_(conn):
     cursor = conn.cursor()
     cursor.execute(" select * from chengjiao where xiaoqubianhao = 1620020495512202 order by sign_time")
     cj_list = cursor.fetchall()
     return cj_list
 
+
+def delete_chengjiao_byhousebianhao(conn, house_bianhao):
+    cursor = conn.cursor()
+    command = "delete from chengjiao where house_bianhao = %s and " \
+              "sign_time > '%s' and sign_time < '%s' " % (house_bianhao, '2017.03.01', '2017.04.01')
+    cursor.execute(command)
+    conn.commit()
+    cursor.close()
 
 
 
